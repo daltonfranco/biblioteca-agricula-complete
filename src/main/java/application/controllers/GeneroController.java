@@ -21,7 +21,7 @@ public class GeneroController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("gêneros", generoRepo.findAll());
+        model.addAttribute("generos", generoRepo.findAll());
         return "list.jsp"; 
     }
 
@@ -75,8 +75,4 @@ public class GeneroController {
         generoRepo.deleteById(id);
         return "redirect:/genero/list";
     }
-
-
-
-
 }
