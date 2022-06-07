@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!-- Arquivo visual para ver algum dado na tabela de autores (cliente) -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

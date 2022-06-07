@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- Arquivo visual para inserir algum dado na tabela de livros (cliente) -->
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

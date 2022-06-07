@@ -1,5 +1,7 @@
 package application.controllers;
  
+/*pacotes para o funcionamento do project*/
+
 import java.util.Optional;
  
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import application.repositories.GeneroRepository;
 import application.repositories.LivroRepository;
 import application.repositories.AutorRepository;
  
+/* criação da rota /livro */
+
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
@@ -24,20 +28,24 @@ public class LivroController {
     private GeneroRepository generoRepo;
     @Autowired
     private AutorRepository autorRepo;
- 
+    
+    /* mostrando dados da tabela livros */
+
     @RequestMapping("/list")
     public String list(Model model) {
         model.addAttribute("livros", livroRepo.findAll());
         return "list.jsp"; 
     }
- 
+    
+    /* criação da rota /insert  que está dentro da rota /livro*/
     @RequestMapping("/insert")
     public String formInsert(Model model) {
         model.addAttribute("generos", generoRepo.findAll());
         model.addAttribute("autores", autorRepo.findAll());
         return "insert.jsp";
     }
- 
+    
+    /* inserindo dados da tabela livros */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String saveInsert(@RequestParam("titulo") String titulo, @RequestParam("genero") int generoId, @RequestParam("autor") int autorId) {
         Livro livro = new Livro();
@@ -49,7 +57,8 @@ public class LivroController {
  
         return "redirect:/livro/list";
     }
- 
+    
+    /* criação da rota /update  que está dentro da rota /livro */
     @RequestMapping("/update/{id}")
     public String formUpdate(Model model, @PathVariable int id) {
         Optional<Livro> livro = livroRepo.findById(id);
@@ -61,6 +70,7 @@ public class LivroController {
         return "/livro/update.jsp";
     }
  
+    /* atualizando dados da tabela livros */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String saveUpdate(@RequestParam("titulo") String titulo, @RequestParam("id") int id, @RequestParam("genero") int generoId, @RequestParam("autor") int autorId) {
         Optional<Livro> livro = livroRepo.findById(id);
@@ -74,7 +84,8 @@ public class LivroController {
  
         return "redirect:/livro/list";
     }
- 
+    
+    /* criação da rota /delete  que está dentro da rota /livro */
     @RequestMapping("/delete/{id}")
     public String formDelete(Model model, @PathVariable int id) {
         Optional<Livro> livro = livroRepo.findById(id);
@@ -83,7 +94,8 @@ public class LivroController {
         model.addAttribute("livro", livro.get());
         return "/livro/delete.jsp";
     }
- 
+    
+    /* deletando dados da tabela livros */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String confirmDelete(@RequestParam("id") int id) {
         livroRepo.deleteById(id);

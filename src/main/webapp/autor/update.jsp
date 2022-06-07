@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!-- Arquivo visual para atualizar algum dado na tabela de autores (cliente) -->
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
